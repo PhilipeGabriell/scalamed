@@ -91,3 +91,12 @@ class ScalamedApp(App):
 
 if __name__ == "__main__":
     ScalamedApp().run()
+class ScheduleScreen(Screen):
+    def on_pre_enter(self):
+        escalas = firebase_service.buscar_escalas()
+        layout = self.ids.escalas_layout
+        layout.clear_widgets()
+
+        for escala in escalas:
+            btn = Button(text=f"{escala['data']} - {escala['turno']} - {escala['setor']}")
+            layout.add_widget(btn)

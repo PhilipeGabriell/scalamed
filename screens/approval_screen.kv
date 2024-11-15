@@ -2,16 +2,14 @@ BoxLayout:
     orientation: 'vertical'
 
     Label:
-        text: 'Escalas de Trabalho'
+        text: 'Solicitações de Troca Pendentes'
         font_size: '24sp'
         size_hint_y: None
         height: dp(50)
 
     ScrollView:
-        size_hint: (1, None)
-        size: (self.width, self.height - dp(50))
         GridLayout:
-            id: escalas_layout
+            id: solicitacoes_layout
             cols: 1
             size_hint_y: None
             height: self.minimum_height
@@ -19,3 +17,4 @@ BoxLayout:
 <Button>:
     size_hint_y: None
     height: dp(40)
+

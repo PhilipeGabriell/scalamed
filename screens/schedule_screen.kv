@@ -1,0 +1,20 @@
+# screens/schedule_screen.kv
+<ScheduleScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
+
+        Label:
+            text: "Minhas Escalas"
+            font_size: 24
+            size_hint_y: None
+            height: 50
+
+        ScrollView:
+            BoxLayout:
+                id: escala_box
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10

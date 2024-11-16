@@ -1,4 +1,3 @@
-# screens/request_swap_screen.kv
 <RequestSwapScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -8,30 +7,26 @@
         Label:
             text: "Solicitar Troca de Turno"
             font_size: 24
-            size_hint_y: None
-            height: 50
 
         TextInput:
-            id: turno_desejado
-            hint_text: "Turno Desejado (manhã/tarde/noite)"
+            id: data
+            hint_text: "Data da Troca (AAAA-MM-DD)"
             multiline: False
-            size_hint_y: None
-            height: 40
 
         TextInput:
-            id: setor_desejado
-            hint_text: "Setor Desejado"
+            id: turno
+            hint_text: "Turno (manhã/tarde/noite)"
             multiline: False
-            size_hint_y: None
-            height: 40
+
+        TextInput:
+            id: motivo
+            hint_text: "Motivo da Troca"
+            multiline: False
 
         Button:
-            text: "Enviar Solicitação de Troca"
-            size_hint_y: None
-            height: 50
-            on_release: root.enviar_solicitacao(turno_desejado.text, setor_desejado.text)
+            text: "Enviar Solicitação"
+            on_press: app.root.current = 'dashboard'
 
-        Label:
-            id: mensagem
-            text: ""
-            color: 1, 0, 0, 1  # Vermelho para mensagens de erro
+        Button:
+            text: "Voltar ao Menu Principal"
+            on_press: app.root.current = 'dashboard'

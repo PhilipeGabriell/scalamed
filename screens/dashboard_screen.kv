@@ -1,4 +1,3 @@
-# screens/dashboard_screen.kv
 <DashboardScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -6,31 +5,21 @@
         spacing: 10
 
         Label:
-            text: "Painel de Controle"
+            text: "Dashboard"
             font_size: 24
-            size_hint_y: None
-            height: 50
 
         Button:
             text: "Ver Escalas"
-            size_hint_y: None
-            height: 50
-            on_release: app.root.current = "schedule"
+            on_press: app.root.current = 'schedule'
 
         Button:
-            text: "Solicitações de Troca Pendentes"
-            size_hint_y: None
-            height: 50
-            on_release: app.root.current = "approve_requests"
+            text: "Solicitar Troca"
+            on_press: app.root.current = 'request_swap'
 
         Button:
-            text: "Solicitar Troca de Turno"
-            size_hint_y: None
-            height: 50
-            on_release: app.root.current = "request_swap"
+            text: "Aprovações"
+            on_press: app.root.current = 'approval'
 
         Button:
-            text: "Sair"
-            size_hint_y: None
-            height: 50
-            on_release: app.root.current = "login"
+            text: "Histórico"
+            on_press: app.root.current = 'history'

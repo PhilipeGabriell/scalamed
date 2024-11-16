@@ -1,4 +1,3 @@
-# screens/login_screen.kv
 <LoginScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -6,35 +5,20 @@
         spacing: 10
 
         Label:
-            text: "Scalamed - Login"
+            text: "Bem-vindo ao Scalamed"
             font_size: 24
-            size_hint_y: None
-            height: 50
 
         TextInput:
             id: email
             hint_text: "E-mail"
             multiline: False
-            size_hint_y: None
-            height: 40
 
         TextInput:
             id: senha
             hint_text: "Senha"
             password: True
             multiline: False
-            size_hint_y: None
-            height: 40
 
         Button:
             text: "Entrar"
-            size_hint_y: None
-            height: 50
-            on_release:
-                app.root.current = "dashboard"  # Alteração de tela provisória
-                root.fazer_login(email.text, senha.text)
-                
-        Label:
-            id: mensagem
-            text: ""
-            color: 1, 0, 0, 1  # Vermelho
+            on_press: app.root.current = 'dashboard'

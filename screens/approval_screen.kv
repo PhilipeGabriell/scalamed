@@ -1,20 +1,44 @@
-BoxLayout:
-    orientation: 'vertical'
+<ApprovalScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 10
 
-    Label:
-        text: 'Solicitações de Troca Pendentes'
-        font_size: '24sp'
-        size_hint_y: None
-        height: dp(50)
+        Label:
+            text: "Aprovação de Trocas"
+            font_size: 24
 
-    ScrollView:
-        GridLayout:
-            id: solicitacoes_layout
-            cols: 1
-            size_hint_y: None
-            height: self.minimum_height
+        ScrollView:
+            size_hint: (1, 0.8)
+            GridLayout:
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
 
-<Button>:
-    size_hint_y: None
-    height: dp(40)
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+                    Label:
+                        text: "Troca: João -> Ana | Data: 20/11/2024"
+                    Button:
+                        text: "Aprovar"
+                    Button:
+                        text: "Rejeitar"
 
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: 40
+                    Label:
+                        text: "Troca: Pedro -> Maria | Data: 21/11/2024"
+                    Button:
+                        text: "Aprovar"
+                    Button:
+                        text: "Rejeitar"
+
+        Button:
+            text: "Voltar ao Menu Principal"
+            size_hint: (1, 0.1)
+            on_press: app.root.current = 'dashboard'

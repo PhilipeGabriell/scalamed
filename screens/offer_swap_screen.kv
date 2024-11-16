@@ -1,30 +1,20 @@
 <OfferSwapScreen>:
     BoxLayout:
-        orientation: "vertical"
+        orientation: 'vertical'
+        spacing: dp(20)
+        padding: dp(20)
 
         Label:
-            text: "Oferecer Troca"
-            font_size: 24
-            size_hint_y: 0.2
+            text: "Ofertas de Troca Disponíveis"
+            font_size: dp(24)
 
-        TextInput:
-            id: data_input
-            hint_text: "Digite a data (YYYY-MM-DD)"
-            multiline: False
-            size_hint_y: 0.2
-
-        TextInput:
-            id: turno_input
-            hint_text: "Digite o turno"
-            multiline: False
-            size_hint_y: 0.2
-
-        Button:
-            text: "Oferecer"
-            size_hint_y: 0.2
-            on_press: root.oferecer_troca(data_input.text, turno_input.text)
+        ScrollView:
+            Label:
+                id: ofertas_lista
+                text: "Carregando ofertas de troca..."
+                size_hint_y: None
+                height: self.texture_size[1]
 
         Button:
             text: "Voltar"
-            size_hint_y: 0.2
-            on_press: app.root.current = "dashboard"
+            on_press: root.manager.current = "dashboard"

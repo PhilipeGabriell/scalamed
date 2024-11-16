@@ -1,36 +1,27 @@
 <RequestSwapScreen>:
     BoxLayout:
-        orientation: "vertical"
+        orientation: 'vertical'
+        spacing: dp(20)
+        padding: dp(20)
 
         Label:
-            text: "Solicitar Troca de Turno"
-            font_size: 24
-            size_hint_y: 0.2
+            text: "Solicitar Troca de Plantão"
+            font_size: dp(24)
 
         TextInput:
-            id: data
-            hint_text: "Digite a data (YYYY-MM-DD)"
+            id: plantao_origem
+            hint_text: "Digite o plantão de origem"
             multiline: False
-            size_hint_y: 0.2
 
         TextInput:
-            id: turno
-            hint_text: "Digite o turno atual"
+            id: sugestao_data
+            hint_text: "Digite a data sugerida para troca (YYYY-MM-DD)"
             multiline: False
-            size_hint_y: 0.2
-
-        TextInput:
-            id: novo_turno
-            hint_text: "Digite o novo turno desejado"
-            multiline: False
-            size_hint_y: 0.2
 
         Button:
             text: "Enviar Solicitação"
-            size_hint_y: 0.2
-            on_press: root.enviar_solicitacao(data.text, turno.text, novo_turno.text)
+            on_press: root.enviar_solicitacao(plantao_origem.text, sugestao_data.text)
 
         Button:
             text: "Voltar"
-            size_hint_y: 0.2
-            on_press: app.root.current = "dashboard"
+            on_press: root.manager.current = "dashboard"

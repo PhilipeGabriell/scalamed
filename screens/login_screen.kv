@@ -1,46 +1,28 @@
 <LoginScreen>:
-    name: "login"
     BoxLayout:
-        orientation: "vertical"
-        padding: [20, 50, 20, 50]
-        spacing: 20
+        orientation: 'vertical'
+        spacing: dp(20)
+        padding: dp(20)
 
         Label:
             text: "Bem-vindo ao Scalamed"
-            font_size: 30
-            size_hint_y: None
-            height: self.texture_size[1]
+            font_size: dp(24)
 
         TextInput:
             id: email
             hint_text: "Digite seu email"
             multiline: False
-            size_hint_y: None
-            height: 50
 
         TextInput:
             id: senha
             hint_text: "Digite sua senha"
             password: True
             multiline: False
-            size_hint_y: None
-            height: 50
 
         Button:
-            text: "Login"
-            size_hint_y: None
-            height: 50
+            text: "Entrar"
             on_press: root.fazer_login(email.text, senha.text)
 
         Button:
-            text: "Criar conta"
-            size_hint_y: None
-            height: 50
-            on_press: root.criar_conta()
-
-        Label:
-            id: mensagem
-            text: ""
-            color: 1, 0, 0, 1
-            size_hint_y: None
-            height: self.texture_size[1]
+            text: "Sair"
+            on_press: app.stop()

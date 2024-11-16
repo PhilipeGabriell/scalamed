@@ -1,33 +1,23 @@
 <CalendarScreen>:
-    name: "calendar"
     BoxLayout:
-        orientation: "vertical"
-        padding: [20, 20, 20, 20]
-        spacing: 20
+        orientation: 'vertical'
+        spacing: dp(20)
+        padding: dp(20)
 
         Label:
             text: "Calendário de Plantões"
-            font_size: 25
-            size_hint_y: None
-            height: self.texture_size[1]
+            font_size: dp(24)
 
-        Label:
-            id: mensagem
-            text: "Selecione uma data para ver os plantões"
-            size_hint_y: None
-            height: self.texture_size[1]
+        # Aqui está a estrutura básica para integrar um calendário real
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
 
-        ScrollView:
-            size_hint: 1, 1
-            GridLayout:
-                id: calendario_container
-                cols: 7
-                size_hint_y: None
-                height: self.minimum_height
-                spacing: 10
+            Label:
+                id: calendario_label
+                text: "Carregando calendário..."
+                font_size: dp(16)
 
         Button:
             text: "Voltar"
-            size_hint_y: None
-            height: 50
-            on_press: app.root.current = "dashboard"
+            on_press: root.manager.current = "dashboard"

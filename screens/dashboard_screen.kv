@@ -1,25 +1,54 @@
 <DashboardScreen>:
+    name: "dashboard"
     BoxLayout:
-        orientation: 'vertical'
-        padding: 20
-        spacing: 10
+        orientation: "vertical"
+        padding: [20, 20, 20, 20]
+        spacing: 20
 
         Label:
-            text: "Dashboard"
-            font_size: 24
+            text: "Bem-vindo, Usuário!"
+            font_size: 25
+            size_hint_y: None
+            height: self.texture_size[1]
 
         Button:
-            text: "Ver Escalas"
-            on_press: app.root.current = 'schedule'
+            text: "Minhas Escalas"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "schedule"
 
         Button:
-            text: "Solicitar Troca"
-            on_press: app.root.current = 'request_swap'
+            text: "Solicitar Troca de Turno"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "request_swap"
 
         Button:
-            text: "Aprovações"
-            on_press: app.root.current = 'approval'
+            text: "Aprovações Pendentes"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "approval"
 
         Button:
-            text: "Histórico"
-            on_press: app.root.current = 'history'
+            text: "Histórico de Trocas"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "history"
+
+        Button:
+            text: "Calendário de Plantões"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "calendar"
+
+        Button:
+            text: "Ofertas de Trocas"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "offer_swap"
+
+        Button:
+            text: "Sair"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "login"

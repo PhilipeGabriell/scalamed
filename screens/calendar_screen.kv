@@ -1,21 +1,27 @@
-<ScheduleScreen>:
-    name: "schedule"
+<CalendarScreen>:
+    name: "calendar"
     BoxLayout:
         orientation: "vertical"
         padding: [20, 20, 20, 20]
         spacing: 20
 
         Label:
-            text: "Minhas Escalas"
+            text: "Calendário de Plantões"
             font_size: 25
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Label:
+            id: mensagem
+            text: "Selecione uma data para ver os plantões"
             size_hint_y: None
             height: self.texture_size[1]
 
         ScrollView:
             size_hint: 1, 1
             GridLayout:
-                id: escalas_container
-                cols: 1
+                id: calendario_container
+                cols: 7
                 size_hint_y: None
                 height: self.minimum_height
                 spacing: 10

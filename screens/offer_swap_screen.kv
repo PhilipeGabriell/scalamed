@@ -1,34 +1,28 @@
-<RequestSwapScreen>:
+<OfferSwapScreen>:
     BoxLayout:
         orientation: "vertical"
 
         Label:
-            text: "Solicitar Troca de Turno"
+            text: "Oferecer Troca"
             font_size: 24
             size_hint_y: 0.2
 
         TextInput:
-            id: data
+            id: data_input
             hint_text: "Digite a data (YYYY-MM-DD)"
             multiline: False
             size_hint_y: 0.2
 
         TextInput:
-            id: turno
-            hint_text: "Digite o turno atual"
-            multiline: False
-            size_hint_y: 0.2
-
-        TextInput:
-            id: novo_turno
-            hint_text: "Digite o novo turno desejado"
+            id: turno_input
+            hint_text: "Digite o turno"
             multiline: False
             size_hint_y: 0.2
 
         Button:
-            text: "Enviar Solicitação"
+            text: "Oferecer"
             size_hint_y: 0.2
-            on_press: root.enviar_solicitacao(data.text, turno.text, novo_turno.text)
+            on_press: root.oferecer_troca(data_input.text, turno_input.text)
 
         Button:
             text: "Voltar"

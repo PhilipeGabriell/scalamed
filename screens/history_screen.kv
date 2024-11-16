@@ -1,27 +1,27 @@
 <HistoryScreen>:
+    name: "history"
     BoxLayout:
-        orientation: 'vertical'
-        padding: 20
-        spacing: 10
+        orientation: "vertical"
+        padding: [20, 20, 20, 20]
+        spacing: 20
 
         Label:
             text: "Histórico de Trocas"
-            font_size: 24
+            font_size: 25
+            size_hint_y: None
+            height: self.texture_size[1]
 
         ScrollView:
-            size_hint: (1, 0.8)
+            size_hint: 1, 1
             GridLayout:
+                id: historico_container
                 cols: 1
                 size_hint_y: None
                 height: self.minimum_height
                 spacing: 10
 
-                Label:
-                    text: "Data: 20/11/2024 | Troca: João -> Ana | Status: Aprovado"
-                Label:
-                    text: "Data: 21/11/2024 | Troca: Pedro -> Maria | Status: Rejeitado"
-
         Button:
-            text: "Voltar ao Menu Principal"
-            size_hint: (1, 0.1)
-            on_press: app.root.current = 'dashboard'
+            text: "Voltar"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "dashboard"

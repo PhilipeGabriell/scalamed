@@ -1,44 +1,27 @@
 <ApprovalScreen>:
+    name: "approval"
     BoxLayout:
-        orientation: 'vertical'
-        padding: 20
-        spacing: 10
+        orientation: "vertical"
+        padding: [20, 20, 20, 20]
+        spacing: 20
 
         Label:
-            text: "Aprovação de Trocas"
-            font_size: 24
+            text: "Aprovações Pendentes"
+            font_size: 25
+            size_hint_y: None
+            height: self.texture_size[1]
 
         ScrollView:
-            size_hint: (1, 0.8)
+            size_hint: 1, 1
             GridLayout:
+                id: aprovacoes_container
                 cols: 1
                 size_hint_y: None
                 height: self.minimum_height
                 spacing: 10
 
-                BoxLayout:
-                    orientation: 'horizontal'
-                    size_hint_y: None
-                    height: 40
-                    Label:
-                        text: "Troca: João -> Ana | Data: 20/11/2024"
-                    Button:
-                        text: "Aprovar"
-                    Button:
-                        text: "Rejeitar"
-
-                BoxLayout:
-                    orientation: 'horizontal'
-                    size_hint_y: None
-                    height: 40
-                    Label:
-                        text: "Troca: Pedro -> Maria | Data: 21/11/2024"
-                    Button:
-                        text: "Aprovar"
-                    Button:
-                        text: "Rejeitar"
-
         Button:
-            text: "Voltar ao Menu Principal"
-            size_hint: (1, 0.1)
-            on_press: app.root.current = 'dashboard'
+            text: "Voltar"
+            size_hint_y: None
+            height: 50
+            on_press: app.root.current = "dashboard"

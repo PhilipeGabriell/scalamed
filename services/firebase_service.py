@@ -2,7 +2,7 @@ import firebase_admin
 from firebase_admin import credentials, db, auth
 
 # Firebase configuration
-cred = credentials.Certificate(r"C:\Users\phili\OneDrive\Área de Trabalho\Scalamed\services\scalamed-67a7d-firebase-adminsdk-4ao27-6416ca9ca9.json")
+cred = credentials.Certificate(r"C:\Users\phili\OneDrive\Área de Trabalho\Scalamed\services\scalamed-67a7d-firebase-adminsdk-4ao27-579621fb1c.json")
 firebase_admin.initialize_app(cred, {
     "databaseURL": "https://scalamed-67a7d-default-rtdb.firebaseio.com"
 })

@@ -1,36 +1,37 @@
-# screens/dashboard_screen.kv
 <DashboardScreen>:
     BoxLayout:
         orientation: 'vertical'
-        padding: 20
-        spacing: 10
+        spacing: dp(20)
+        padding: dp(20)
 
         Label:
-            text: "Painel de Controle"
-            font_size: 24
-            size_hint_y: None
-            height: 50
+            text: "Bem-vindo ao Scalamed"
+            font_size: dp(24)
 
         Button:
-            text: "Ver Escalas"
-            size_hint_y: None
-            height: 50
-            on_release: app.root.current = "schedule"
+            text: "Ver Minhas Escalas"
+            on_press: root.manager.current = "schedule"
 
         Button:
-            text: "Solicitações de Troca Pendentes"
-            size_hint_y: None
-            height: 50
-            on_release: app.root.current = "approve_requests"
+            text: "Solicitar Troca"
+            on_press: root.manager.current = "request_swap"
 
         Button:
-            text: "Solicitar Troca de Turno"
-            size_hint_y: None
-            height: 50
-            on_release: app.root.current = "request_swap"
+            text: "Ofertas de Troca"
+            on_press: root.manager.current = "offer_swap"
 
         Button:
-            text: "Sair"
-            size_hint_y: None
-            height: 50
-            on_release: app.root.current = "login"
+            text: "Aprovações Pendentes"
+            on_press: root.manager.current = "approvals_pending"
+
+        Button:
+            text: "Histórico"
+            on_press: root.manager.current = "history"
+
+        Button:
+            text: "Cadastrar Funcionário" 
+            on_press: root.manager.current = "register"
+
+        Button:
+            text: "Logout"
+            on_press: root.manager.current = "login"

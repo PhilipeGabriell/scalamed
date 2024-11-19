@@ -1,4 +1,3 @@
-# screens/schedule_screen.kv
 <ScheduleScreen>:
     BoxLayout:
         orientation: 'vertical'
@@ -7,14 +6,31 @@
 
         Label:
             text: "Minhas Escalas"
-            font_size: 24
+            font_size: '20sp'
             size_hint_y: None
-            height: 50
+            height: self.texture_size[1] + 10
+            halign: 'center'
+            valign: 'middle'
 
         ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
             BoxLayout:
-                id: escala_box
-                orientation: 'vertical'
+                id: escalas_lista
+                orientation: "vertical"
                 size_hint_y: None
                 height: self.minimum_height
                 spacing: 10
+
+        Button:
+            text: "Cadastrar Escala"
+            size_hint_y: None
+            height: 50
+            on_release: root.cadastrar_escala()
+
+        Button:
+            text: "Voltar"
+            size_hint_y: None
+            height: 50
+            on_release: app.root.current = 'dashboard'  # Ajuste conforme a navegação do seu app

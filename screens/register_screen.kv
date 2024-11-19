@@ -1,0 +1,24 @@
+<RegisterScreen>:
+    name: "register"
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+
+        Label:
+            text: "Cadastro de Funcionário"
+            font_size: '20sp'
+            size_hint_y: None
+            height: 40
+
+        Button:
+            text: "Cadastrar Funcionário"
+            size_hint_y: None
+            height: 50
+            on_release: root.cadastrar_funcionario()
+
+        Button:
+            text: "Voltar"
+            size_hint_y: None
+            height: 50
+            on_release: app.root.current = "dashboard"

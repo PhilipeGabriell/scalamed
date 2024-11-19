@@ -1,0 +1,28 @@
+<OfferSwapScreen>:
+    name: "offer_swap"
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 20
+        padding: 20
+
+        Label:
+            text: "Ofertas de Troca"
+            font_size: '20sp'
+            size_hint_y: None
+            height: 40
+
+        ScrollView:
+            do_scroll_y: True
+
+            BoxLayout:
+                id: ofertas_lista
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
+
+        Button:
+            text: "Voltar"
+            size_hint_y: None
+            height: 50
+            on_release: app.root.current = "dashboard"

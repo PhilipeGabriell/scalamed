@@ -1,37 +1,24 @@
-# screens/request_swap_screen.kv
 <RequestSwapScreen>:
+    name: "request_swap"
     BoxLayout:
         orientation: 'vertical'
+        spacing: 20
         padding: 20
-        spacing: 10
 
         Label:
-            text: "Solicitar Troca de Turno"
-            font_size: 24
-            size_hint_y: None
-            height: 50
-
-        TextInput:
-            id: turno_desejado
-            hint_text: "Turno Desejado (manhã/tarde/noite)"
-            multiline: False
-            size_hint_y: None
-            height: 40
-
-        TextInput:
-            id: setor_desejado
-            hint_text: "Setor Desejado"
-            multiline: False
+            text: "Ofertas de Trocas"
+            font_size: '20sp'
             size_hint_y: None
             height: 40
 
         Button:
-            text: "Enviar Solicitação de Troca"
+            text: "Adicionar Oferta"
             size_hint_y: None
             height: 50
-            on_release: root.enviar_solicitacao(turno_desejado.text, setor_desejado.text)
+            on_release: root.add_offer()
 
-        Label:
-            id: mensagem
-            text: ""
-            color: 1, 0, 0, 1  # Vermelho para mensagens de erro
+        Button:
+            text: "Voltar"
+            size_hint_y: None
+            height: 50
+            on_release: app.root.current = "dashboard"

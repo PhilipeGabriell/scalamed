@@ -1,0 +1,23 @@
+<CalendarScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(20)
+        padding: dp(20)
+
+        Label:
+            text: "Calendário de Plantões"
+            font_size: dp(24)
+
+        # Aqui está a estrutura básica para integrar um calendário real
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(10)
+
+            Label:
+                id: calendario_label
+                text: "Carregando calendário..."
+                font_size: dp(16)
+
+        Button:
+            text: "Voltar"
+            on_press: root.manager.current = "dashboard"

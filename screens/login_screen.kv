@@ -1,28 +1,67 @@
 <LoginScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.6, 0.9, 0.6, 1  # Cor de fundo verde claro
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
     BoxLayout:
-        orientation: "vertical"
-        padding: 20
-        spacing: 10
+        orientation: 'vertical'
+        padding: 50
+        spacing: 20
+        size_hint: 0.8, None
+        height: self.minimum_height
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
 
         Label:
-            text: "Login"
-            font_size: 24
+            text: "Scalamed"
+            font_size: 36
+            color: 0, 0, 0, 1  # Cor do texto preta
+            size_hint_y: None
+            height: 50
+            halign: "center"
+            font_name: "Roboto"  # Fonte Roboto
 
         TextInput:
             id: email
-            hint_text: "Email"
+            hint_text: "Digite seu email"
             multiline: False
+            size_hint_y: None
+            height: 40
+            font_name: "Roboto"
 
         TextInput:
             id: senha
-            hint_text: "Senha"
+            hint_text: "Digite sua senha"
             password: True
             multiline: False
+            size_hint_y: None
+            height: 40
+            font_name: "Roboto"
 
         Button:
             text: "Entrar"
+            size_hint_y: None
+            height: 50
+            background_color: 0.4, 0.8, 1, 1  # Azul claro
+            color: 1, 1, 1, 1  # Texto branco
             on_press: root.fazer_login(email.text, senha.text)
+            font_name: "Roboto"
 
         Button:
             text: "Cadastrar Usuário"
-            on_press: app.root.current = "register"
+            size_hint_y: None
+            height: 50
+            background_color: 0.4, 0.8, 1, 1  # Azul claro
+            color: 1, 1, 1, 1  # Texto branco
+            on_press: root.manager.current = "register"
+            font_name: "Roboto"
+
+        Label:
+            id: mensagem
+            text: ""
+            color: 1, 0, 0, 1  # Cor de mensagem de erro em vermelho
+            size_hint_y: None
+            height: 40
+            font_name: "Roboto"

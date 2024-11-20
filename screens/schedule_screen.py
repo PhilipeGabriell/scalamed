@@ -22,27 +22,47 @@ class ScheduleScreen(Screen):
             mensagem = Label(
                 text="Nenhuma escala cadastrada.",
                 size_hint_y=None,
-                height=40,
+                height=50,  # Aumentado o tamanho para melhor exibição
                 halign="center",
-                valign="middle"
+                valign="middle",
+                color=(0, 0, 0, 1),  # Texto em preto
             )
             self.ids.escalas_lista.add_widget(mensagem)
             return
 
         # Criar layout para cada escala
         for escala_id, esc in escalas.items():
-            layout = BoxLayout(orientation="horizontal", size_hint_y=None, height=40)
+            layout = BoxLayout(orientation="horizontal", size_hint_y=None, height=60, padding=10)  # Altura ajustada
+
+            # Cor de fundo e cor do texto
             label = Label(
                 text=f"{esc['titulo']} - {esc['dia']} às {esc['horario']} "
                      f"{'(Repetir: ' + esc.get('repetir', '') + ')' if esc.get('repetir') else ''}",
                 size_hint_x=0.6,
                 halign="left",
-                valign="middle"
+                valign="middle",
+                color=(0, 0, 0, 1),  # Texto preto
+                font_size='18sp',  # Fonte maior para melhor legibilidade
             )
             label.bind(size=label.setter('text_size'))  # Ajustar quebra de linha
 
-            btn_edit = Button(text="Editar", size_hint_x=0.2)
-            btn_delete = Button(text="Deletar", size_hint_x=0.2)
+            # Botões com borda preta
+            btn_edit = Button(
+                text="Editar", 
+                size_hint_x=0.2, 
+                background_normal='', 
+                background_color=(0.3, 0.5, 1, 1), 
+                color=(1, 1, 1, 1),
+                border=(1, 1, 1, 1)  # Adiciona borda preta
+            )
+            btn_delete = Button(
+                text="Deletar", 
+                size_hint_x=0.2, 
+                background_normal='', 
+                background_color=(1, 0, 0, 1), 
+                color=(1, 1, 1, 1),
+                border=(1, 1, 1, 1)  # Adiciona borda preta
+            )
 
             # Bind dos botões com os métodos de edição e exclusão
             btn_edit.bind(on_release=lambda instance, eid=escala_id: self.alterar_escala(eid, esc))
@@ -70,7 +90,7 @@ class ScheduleScreen(Screen):
             popup.dismiss()
 
         layout = BoxLayout(orientation="vertical", spacing=10, padding=10)
-        label = Label(text="Deseja realmente excluir esta escala?")
+        label = Label(text="Deseja realmente excluir esta escala?", color=(0, 0, 0, 1))
         btn_confirm = Button(text="Sim", size_hint_y=None, height=40)
         btn_cancel = Button(text="Cancelar", size_hint_y=None, height=40)
 
@@ -116,7 +136,7 @@ class ScheduleScreen(Screen):
         btn_save.bind(on_release=salvar_alteracoes)
         btn_cancel.bind(on_release=lambda instance: popup.dismiss())
 
-        layout.add_widget(Label(text="Cadastrar Nova Escala" if not escala_id else "Alterar Escala"))
+        layout.add_widget(Label(text="Cadastrar Nova Escala" if not escala_id else "Alterar Escala", color=(0, 0, 0, 1)))
         layout.add_widget(titulo_input)
         layout.add_widget(dia_input)
         layout.add_widget(horario_input)

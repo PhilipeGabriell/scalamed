@@ -3,14 +3,22 @@
         orientation: 'vertical'
         padding: 20
         spacing: 10
+        canvas.before:
+            Color:
+                rgba: 0.85, 0.95, 0.85, 1  # Verde suave de fundo
+            Rectangle:
+                size: self.size
+                pos: self.pos
 
         Label:
             text: "Minhas Escalas"
-            font_size: '20sp'
+            font_size: '24sp'
             size_hint_y: None
             height: self.texture_size[1] + 10
             halign: 'center'
             valign: 'middle'
+            color: 0, 0, 0, 1  # Texto preto
+            font_name: "Roboto"
 
         ScrollView:
             do_scroll_x: False
@@ -22,15 +30,22 @@
                 size_hint_y: None
                 height: self.minimum_height
                 spacing: 10
+                padding: 10
 
         Button:
             text: "Cadastrar Escala"
             size_hint_y: None
             height: 50
+            background_color: 0.4, 0.8, 1, 1  # Azul claro
             on_release: root.cadastrar_escala()
+            color: 1, 1, 1, 1  # Texto branco
+            font_name: "Roboto"
 
         Button:
             text: "Voltar"
             size_hint_y: None
             height: 50
-            on_release: app.root.current = 'dashboard'  # Ajuste conforme a navegação do seu app
+            background_color: 1, 0.4, 0.4, 1  # Vermelho suave
+            on_press: app.root.current = 'dashboard'  # Ajuste conforme a navegação do seu app
+            color: 1, 1, 1, 1  # Texto branco
+            font_name: "Roboto"

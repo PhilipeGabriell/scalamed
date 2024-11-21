@@ -8,18 +8,16 @@ from services.firebase_service import cadastrar_funcionario
 class RegisterScreen(Screen):
     def on_pre_enter(self):
         """Configura o fundo da tela para o padrão do sistema."""
-        self.update_background()  # Atualiza o fundo da tela
+        self.update_background()
 
     def update_background(self):
         """Configura o fundo da tela."""
         from kivy.graphics import Color, Rectangle
 
         with self.canvas.before:
-            # Remove qualquer objeto anterior no canvas
-            Color(0.6, 0.9, 0.6, 1)  # Verde claro
+            Color(0.6, 0.9, 0.6, 1)
             self.rect = Rectangle(size=self.size, pos=self.pos)
         
-        # Atualiza a posição e o tamanho do fundo ao redimensionar
         self.bind(size=self.update_rect, pos=self.update_rect)
 
     def update_rect(self, *args):
@@ -35,7 +33,7 @@ class RegisterScreen(Screen):
         if nome and email and senha:
             sucesso = cadastrar_funcionario(nome, email, senha)
             if sucesso:
-                self.manager.current = 'login'  # Voltar para a tela de login após cadastro
+                self.manager.current = 'login'
             else:
                 self.show_popup("Erro", "Erro ao cadastrar funcionário.")
         else:

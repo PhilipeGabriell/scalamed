@@ -10,50 +10,46 @@ from services.firebase_service import salvar_escala, buscar_escalas, alterar_esc
 
 class ScheduleScreen(Screen):
     def on_pre_enter(self):
-        usuario_id = MDApp.get_running_app().usuario_id  # Suporte ao usuário logado
+        usuario_id = MDApp.get_running_app().usuario_id
         escalas = buscar_escalas(usuario_id)
         self.exibir_escalas(escalas)
 
     def exibir_escalas(self, escalas):
-        self.ids.escalas_lista.clear_widgets()  # Limpar widgets antigos
+        self.ids.escalas_lista.clear_widgets()
 
         if not escalas or not isinstance(escalas, dict):
-            # Exibir mensagem padrão caso não haja escalas
             mensagem = Label(
                 text="Nenhuma escala cadastrada.",
                 size_hint_y=None,
-                height=50,  # Aumentado o tamanho para melhor exibição
+                height=50,
                 halign="center",
                 valign="middle",
-                color=(0, 0, 0, 1),  # Texto em preto
+                color=(0, 0, 0, 1),
             )
             self.ids.escalas_lista.add_widget(mensagem)
             return
 
-        # Criar layout para cada escala
         for escala_id, esc in escalas.items():
             layout = BoxLayout(orientation="horizontal", size_hint_y=None, height=60, padding=10)  # Altura ajustada
 
-            # Cor de fundo e cor do texto
             label = Label(
                 text=f"{esc['titulo']} - {esc['dia']} às {esc['horario']} "
                      f"{'(Repetir: ' + esc.get('repetir', '') + ')' if esc.get('repetir') else ''}",
                 size_hint_x=0.6,
                 halign="left",
                 valign="middle",
-                color=(0, 0, 0, 1),  # Texto preto
-                font_size='18sp',  # Fonte maior para melhor legibilidade
+                color=(0, 0, 0, 1),
+                font_size='18sp',
             )
-            label.bind(size=label.setter('text_size'))  # Ajustar quebra de linha
+            label.bind(size=label.setter('text_size'))
 
-            # Botões com borda preta
             btn_edit = Button(
                 text="Editar", 
                 size_hint_x=0.2, 
                 background_normal='', 
                 background_color=(0.3, 0.5, 1, 1), 
                 color=(1, 1, 1, 1),
-                border=(1, 1, 1, 1)  # Adiciona borda preta
+                border=(1, 1, 1, 1)
             )
             btn_delete = Button(
                 text="Deletar", 
@@ -61,19 +57,16 @@ class ScheduleScreen(Screen):
                 background_normal='', 
                 background_color=(1, 0, 0, 1), 
                 color=(1, 1, 1, 1),
-                border=(1, 1, 1, 1)  # Adiciona borda preta
+                border=(1, 1, 1, 1)
             )
 
-            # Bind dos botões com os métodos de edição e exclusão
             btn_edit.bind(on_release=lambda instance, eid=escala_id: self.alterar_escala(eid, esc))
             btn_delete.bind(on_release=lambda instance, eid=escala_id: self.deletar_escala(eid))
 
-            # Adicionar widgets ao layout
             layout.add_widget(label)
             layout.add_widget(btn_edit)
             layout.add_widget(btn_delete)
 
-            # Adicionar o layout ao container principal
             self.ids.escalas_lista.add_widget(layout)
 
     def cadastrar_escala(self):

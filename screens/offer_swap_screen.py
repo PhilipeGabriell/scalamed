@@ -8,7 +8,6 @@ from services.firebase_service import buscar_ofertas, solicitar_troca
 
 class OfferSwapScreen(Screen):
     def on_pre_enter(self):
-        # Exibir o histórico de ofertas ao carregar a tela
         self.exibir_ofertas()
 
     def exibir_ofertas(self):
@@ -22,7 +21,7 @@ class OfferSwapScreen(Screen):
                 height=40,
                 halign="center",
                 valign="middle",
-                color=(0, 0, 0, 1)  # Cor do texto em preto
+                color=(0, 0, 0, 1)
             )
             self.ids.ofertas_lista.add_widget(mensagem)
             return
@@ -41,15 +40,14 @@ class OfferSwapScreen(Screen):
             usuario_solicitante = f"Solicitante: {usuario_id}"
             destino_dia = f"Dia desejado: {dia_desejado}"
 
-            # Ajustando Labels com alinhamento, texto em preto, e quebra de linha
             label_escala = Label(
                 text=escala_detalhes,
                 size_hint_y=None,
                 height=40,
                 halign="left",
                 valign="middle",
-                color=(0, 0, 0, 1),  # Texto preto
-                text_size=(self.width - 40, None)  # Largura ajustada para evitar cortes
+                color=(0, 0, 0, 1),
+                text_size=(self.width - 40, None)
             )
             label_escala.bind(size=label_escala.setter('text_size'))
 
@@ -70,19 +68,18 @@ class OfferSwapScreen(Screen):
                 height=20,
                 halign="left",
                 valign="middle",
-                color=(0, 0, 0, 1),  # Texto preto
+                color=(0, 0, 0, 1),
                 text_size=(self.width - 40, None)
             )
             label_dia.bind(size=label_dia.setter('text_size'))
 
-            # Botão de solicitar troca com fundo azul
             btn_solicitar = Button(
                 text="Solicitar Troca",
                 size_hint_y=None,
                 height=40,
                 background_normal='',
-                background_color=(0.3, 0.5, 1, 1),  # Azul claro
-                color=(1, 1, 1, 1)  # Texto branco
+                background_color=(0.3, 0.5, 1, 1),
+                color=(1, 1, 1, 1)
             )
             btn_solicitar.bind(on_release=lambda instance, oid=oferta_id, oferta=oferta: self.solicitar_troca(oid, oferta))
 

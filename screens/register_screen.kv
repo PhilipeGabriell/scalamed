@@ -11,8 +11,7 @@
             height: self.texture_size[1] + 10
             halign: 'center'
             font_name: "Roboto"
-            color: 0, 0, 0, 1  # Preto
-
+            color: 0, 0, 0, 1
         TextInput:
             id: nome_input
             hint_text: "Nome do Funcionário"
@@ -39,14 +38,14 @@
             text: "Cadastrar"
             size_hint_y: None
             height: 50
-            background_color: 0.3, 0.5, 1, 1  # Azul
-            color: 1, 1, 1, 1  # Texto branco
+            background_color: 0.3, 0.5, 1, 1
+            color: 1, 1, 1, 1
             on_release: root.realizar_cadastro()
 
         Button:
             text: "Cancelar"
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.8, 0.8, 1  # Cinza claro
-            color: 1, 1, 1, 1  # Texto branco
-            on_release: root.manager.current = 'login'  # Voltar para a tela de login
+            background_color: 0.8, 0.8, 0.8, 1
+            color: 1, 1, 1, 1
+            on_release: root.manager.current = 'login'

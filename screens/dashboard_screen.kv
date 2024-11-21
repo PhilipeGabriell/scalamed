@@ -1,7 +1,7 @@
 <DashboardScreen>:
     canvas.before:
         Color:
-            rgba: 0.6, 0.9, 0.6, 1  # Cor de fundo verde claro
+            rgba: 0.6, 0.9, 0.6, 1
         Rectangle:
             size: self.size
             pos: self.pos
@@ -17,19 +17,19 @@
         Label:
             text: "Bem-vindo ao Scalamed"
             font_size: 36
-            color: 0, 0, 0, 1  # Cor do texto preta
+            color: 0, 0, 0, 1
             size_hint_y: None
             height: 50
             halign: "center"
-            font_name: "Roboto"  # Fonte Roboto
+            font_name: "Roboto"
             bold: True
 
         Button:
             text: "Minhas Escalas"
             size_hint_y: None
             height: 50
-            background_color: 0.4, 0.8, 1, 1  # Azul claro
-            color: 1, 1, 1, 1  # Texto branco
+            background_color: 0.4, 0.8, 1, 1
+            color: 1, 1, 1, 1
             on_press: root.manager.current = "schedule"
             font_name: "Roboto"
 
@@ -37,25 +37,25 @@
             text: "Solicitar Troca"
             size_hint_y: None
             height: 50
-            background_color: 0.4, 0.8, 1, 1  # Azul claro
-            color: 1, 1, 1, 1  # Texto branco
+            background_color: 0.4, 0.8, 1, 1
+            color: 1, 1, 1, 1 
             on_press: root.manager.current = "request_swap"
             font_name: "Roboto"
         Button:
             text: "Ofertas de Troca"
             size_hint_y: None
             height: 50
-            background_color: 0.4, 0.8, 1, 1  # Azul claro
-            color: 1, 1, 1, 1  # Texto branco
-            on_press: root.manager.current = "offer_swap"  # Ajuste conforme a navegação
+            background_color: 0.4, 0.8, 1, 1 
+            color: 1, 1, 1, 1
+            on_press: root.manager.current = "offer_swap"
             font_name: "Roboto"
            
         Button:
             text: "Aprovações Pendentes"
             size_hint_y: None
             height: 50
-            background_color: 0.4, 0.8, 1, 1  # Azul claro
-            color: 1, 1, 1, 1  # Texto branco
+            background_color: 0.4, 0.8, 1, 1
+            color: 1, 1, 1, 1
             on_press: root.manager.current = "approvals_pending"
             font_name: "Roboto"
 
@@ -63,8 +63,8 @@
             text: "Historico de Trocas"
             size_hint_y: None
             height: 50
-            background_color: 0.4, 0.8, 1, 1  # Azul claro
-            color: 1, 1, 1, 1  # Texto branco
+            background_color: 0.4, 0.8, 1, 1
+            color: 1, 1, 1, 1
             on_press: root.manager.current = "history"
             font_name: "Roboto"
 
@@ -72,15 +72,15 @@
             text: "Cadastro de Funcionário"
             size_hint_y: None
             height: 50
-            background_color: 0.4, 0.8, 1, 1  # Azul claro
-            color: 1, 1, 1, 1  # Texto branco
+            background_color: 0.4, 0.8, 1, 1
+            color: 1, 1, 1, 1 
             on_press: root.manager.current = "register"
             font_name: "Roboto"
         Button:
             text: "Logout"
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.8, 0.8, 1  # Cor para o botão de logout
-            color: 1, 1, 1, 1  # Texto branco
+            background_color: 0.8, 0.8, 0.8, 1
+            color: 1, 1, 1, 1
             on_press: app.stop()
             font_name: "Roboto"

@@ -13,13 +13,12 @@ from services.firebase_service import (
 )
 
 class ApprovalsPendingScreen(Screen):
-    # Método chamado sempre que a tela está prestes a ser exibida
     def on_pre_enter(self):
-        self.exibir_aprovacoes()  # Chama a função para exibir as aprovações pendentes
+        self.exibir_aprovacoes()
 
     def exibir_aprovacoes(self):
-        self.ids.aprovacoes_lista.clear_widgets()  # Limpa os widgets da tela antes de adicionar novos
-        aprovacoes = buscar_aprovacoes()  # Busca as aprovações
+        self.ids.aprovacoes_lista.clear_widgets()
+        aprovacoes = buscar_aprovacoes()
 
         if not aprovacoes or not isinstance(aprovacoes, dict):
             mensagem = Label(
@@ -28,7 +27,7 @@ class ApprovalsPendingScreen(Screen):
                 height=40,
                 halign="center",
                 valign="middle",
-                color=(0, 0, 0, 1)  # Texto em preto
+                color=(0, 0, 0, 1)
             )
             self.ids.aprovacoes_lista.add_widget(mensagem)
             return
@@ -41,7 +40,6 @@ class ApprovalsPendingScreen(Screen):
             solicitante_id = aprovacao.get("usuario_id")
             ofertante_id = aprovacao.get("oferta_usuario_id")
 
-            # Buscar os nomes dos solicitante e ofertante
             nome_solicitante = buscar_nome_usuario(solicitante_id)
             nome_ofertante = buscar_nome_usuario(ofertante_id)
 
@@ -53,7 +51,6 @@ class ApprovalsPendingScreen(Screen):
             detalhes_ofertante = f"Ofertante: {nome_ofertante}"
             destino_dia = f"Dia desejado: {dia_desejado}"
 
-            # Labels para informações
             label_escala = Label(
                 text=escala_detalhes,
                 size_hint_y=None,
@@ -61,7 +58,7 @@ class ApprovalsPendingScreen(Screen):
                 halign="left",
                 valign="middle",
                 text_size=(self.width - 40, None),
-                color=(0, 0, 0, 1)  # Texto em preto
+                color=(0, 0, 0, 1)o
             )
             label_solicitante = Label(
                 text=detalhes_solicitante,
@@ -70,7 +67,7 @@ class ApprovalsPendingScreen(Screen):
                 halign="left",
                 valign="middle",
                 text_size=(self.width - 40, None),
-                color=(0, 0, 0, 1)  # Texto em preto
+                color=(0, 0, 0, 1)
             )
             label_ofertante = Label(
                 text=detalhes_ofertante,
@@ -79,7 +76,7 @@ class ApprovalsPendingScreen(Screen):
                 halign="left",
                 valign="middle",
                 text_size=(self.width - 40, None),
-                color=(0, 0, 0, 1)  # Texto em preto
+                color=(0, 0, 0, 1)
             )
             label_dia = Label(
                 text=destino_dia,
@@ -88,10 +85,9 @@ class ApprovalsPendingScreen(Screen):
                 halign="left",
                 valign="middle",
                 text_size=(self.width - 40, None),
-                color=(0, 0, 0, 1)  # Texto em preto
+                color=(0, 0, 0, 1)
             )
 
-            # Botões de Aprovar e Rejeitar com as cores ajustadas
             btn_aprovar = Button(text="Aprovar", size_hint_y=None, height=40, background_normal='', background_color=(0.3, 0.5, 1, 1), color=(1, 1, 1, 1))
             btn_aprovar.bind(on_release=lambda instance, aid=aprovacao_id, ainfo=aprovacao: self.aprovar_solicitacao(aid, ainfo))
 
@@ -123,7 +119,7 @@ class ApprovalsPendingScreen(Screen):
             mover_para_historico(aprovacao_id, "Aprovada", aprovacao)
             popup = Popup(title="Sucesso", content=Label(text="Solicitação aprovada!"), size_hint=(0.8, 0.3))
             popup.open()
-            self.on_pre_enter()  # Chama de novo para atualizar os dados
+            self.on_pre_enter()
         else:
             popup = Popup(title="Erro", content=Label(text="Erro ao aprovar solicitação."), size_hint=(0.8, 0.3))
             popup.open()
@@ -132,7 +128,7 @@ class ApprovalsPendingScreen(Screen):
         if mover_para_historico(aprovacao_id, "Rejeitada", aprovacao):
             popup = Popup(title="Sucesso", content=Label(text="Solicitação rejeitada!"), size_hint=(0.8, 0.3))
             popup.open()
-            self.on_pre_enter()  # Chama de novo para atualizar os dados
+            self.on_pre_enter()
         else:
             popup = Popup(title="Erro", content=Label(text="Erro ao rejeitar solicitação."), size_hint=(0.8, 0.3))
             popup.open()

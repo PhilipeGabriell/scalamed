@@ -1,7 +1,7 @@
 <RequestSwapScreen>:
     canvas.before:
         Color: 
-            rgba: 0.8, 1, 0.8, 1  # Verde suave
+            rgba: 0.8, 1, 0.8, 1 
         Rectangle:
             size: self.size
             pos: self.pos
@@ -17,8 +17,8 @@
             size_hint_y: None
             height: 50
             halign: 'center'
-            color: 0, 0, 0, 1  # Texto preto
-            font_name: "Roboto"  # Fonte Roboto
+            color: 0, 0, 0, 1
+            font_name: "Roboto"
 
         ScrollView:
             do_scroll_x: False
@@ -34,8 +34,8 @@
             text: "Adicionar Oferta"
             size_hint_y: None
             height: 50
-            background_color: 0.3, 0.5, 1, 1  # Azul claro
-            color: 1, 1, 1, 1  # Texto branco
+            background_color: 0.3, 0.5, 1, 1
+            color: 1, 1, 1, 1
             on_press: root.add_offer()
             font_name: "Roboto"
 
@@ -43,7 +43,7 @@
             text: "Voltar"
             size_hint_y: None
             height: 50
-            background_color: 0.8, 0.8, 0.8, 1  # Cor suave para voltar
-            color: 1, 1, 1, 1  # Texto branco
+            background_color: 0.8, 0.8, 0.8, 1
+            color: 1, 1, 1, 1
             on_press: app.root.current = 'dashboard'
             font_name: "Roboto"

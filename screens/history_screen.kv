@@ -5,7 +5,7 @@
         spacing: 10
         canvas.before:
             Color:
-                rgba: 0.8, 1, 0.8, 1  # Verde suave
+                rgba: 0.8, 1, 0.8, 1
             Rectangle:
                 size: self.size
                 pos: self.pos
@@ -17,7 +17,7 @@
             height: 50
             halign: "center"
             valign: "middle"
-            color: 0, 0, 0, 1  # Texto preto
+            color: 0, 0, 0, 1
             font_name: "Roboto"
 
         ScrollView:
@@ -33,7 +33,7 @@
             text: "Voltar"
             size_hint_y: None
             height: 50
-            background_color: 0.4, 0.8, 1, 1  # Azul claro
-            color: 1, 1, 1, 1  # Texto branco
-            on_press: app.root.current = 'dashboard'  # Ajuste conforme a navegação do seu app
+            background_color: 0.4, 0.8, 1, 1
+            color: 1, 1, 1, 1 
+            on_press: app.root.current = 'dashboard'
             font_name: "Roboto"

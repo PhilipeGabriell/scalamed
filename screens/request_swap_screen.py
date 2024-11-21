@@ -16,7 +16,6 @@ class RequestSwapScreen(Screen):
     def add_offer(self):
         layout = BoxLayout(orientation="vertical", spacing=10, padding=10)
         
-        # Criar lista de opções dos plantões existentes
         if not self.escalas or not isinstance(self.escalas, dict):
             popup = Popup(title="Aviso", content=Label(text="Você não tem escalas para oferecer."), size_hint=(0.8, 0.3))
             popup.open()
@@ -61,7 +60,6 @@ class RequestSwapScreen(Screen):
                 }
                 if salvar_oferta(oferta):
                     popup.dismiss()
-                    # Notificar sucesso ao usuário
                     success_popup = Popup(title="Sucesso", content=Label(text="Oferta adicionada com sucesso!"), size_hint=(0.8, 0.3))
                     success_popup.open()
                 else:

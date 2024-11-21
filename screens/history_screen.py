@@ -6,7 +6,6 @@ from services.firebase_service import buscar_historico
 
 class HistoryScreen(Screen):
     def on_pre_enter(self):
-        # Carregar o histórico ao entrar na tela
         self.exibir_historico()
 
     def exibir_historico(self):
@@ -20,7 +19,7 @@ class HistoryScreen(Screen):
                 height=40,
                 halign="center",
                 valign="middle",
-                color=(0, 0, 0, 1)  # Cor do texto em preto
+                color=(0, 0, 0, 1)
             )
             self.ids.historico_lista.add_widget(mensagem)
             return
@@ -40,7 +39,6 @@ class HistoryScreen(Screen):
             destino_dia = f"Dia desejado: {dia_desejado}"
             status_detalhes = f"Status: {status}"
 
-            # Ajustar as labels para ter o texto preto
             label_escala = Label(
                 text=escala_detalhes,
                 size_hint_y=None,
@@ -48,7 +46,7 @@ class HistoryScreen(Screen):
                 halign="left",
                 valign="middle",
                 text_size=(self.width - 40, None),
-                color=(0, 0, 0, 1)  # Cor do texto em preto
+                color=(0, 0, 0, 1)
             )
             label_solicitante = Label(
                 text=solicitante,
@@ -57,7 +55,7 @@ class HistoryScreen(Screen):
                 halign="left",
                 valign="middle",
                 text_size=(self.width - 40, None),
-                color=(0, 0, 0, 1)  # Cor do texto em preto
+                color=(0, 0, 0, 1)
             )
             label_dia = Label(
                 text=destino_dia,
@@ -66,7 +64,7 @@ class HistoryScreen(Screen):
                 halign="left",
                 valign="middle",
                 text_size=(self.width - 40, None),
-                color=(0, 0, 0, 1)  # Cor do texto em preto
+                color=(0, 0, 0, 1)
             )
             label_status = Label(
                 text=status_detalhes,
@@ -75,7 +73,7 @@ class HistoryScreen(Screen):
                 halign="left",
                 valign="middle",
                 text_size=(self.width - 40, None),
-                color=(0, 0, 0, 1)  # Cor do texto em preto
+                color=(0, 0, 0, 1)
             )
 
             layout.add_widget(label_escala)

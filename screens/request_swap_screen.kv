@@ -1,24 +1,49 @@
 <RequestSwapScreen>:
-    name: "request_swap"
+    canvas.before:
+        Color: 
+            rgba: 0.8, 1, 0.8, 1  # Verde suave
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
     BoxLayout:
         orientation: 'vertical'
-        spacing: 20
         padding: 20
+        spacing: 10
 
         Label:
-            text: "Ofertas de Trocas"
-            font_size: '20sp'
+            text: "Adicionar Oferta de Troca"
+            font_size: '24sp'
             size_hint_y: None
-            height: 40
+            height: 50
+            halign: 'center'
+            color: 0, 0, 0, 1  # Texto preto
+            font_name: "Roboto"  # Fonte Roboto
+
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 10
 
         Button:
             text: "Adicionar Oferta"
             size_hint_y: None
             height: 50
-            on_release: root.add_offer()
+            background_color: 0.3, 0.5, 1, 1  # Azul claro
+            color: 1, 1, 1, 1  # Texto branco
+            on_press: root.add_offer()
+            font_name: "Roboto"
 
         Button:
             text: "Voltar"
             size_hint_y: None
             height: 50
-            on_release: app.root.current = "dashboard"
+            background_color: 0.8, 0.8, 0.8, 1  # Cor suave para voltar
+            color: 1, 1, 1, 1  # Texto branco
+            on_press: app.root.current = 'dashboard'
+            font_name: "Roboto"

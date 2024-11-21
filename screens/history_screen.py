@@ -19,7 +19,8 @@ class HistoryScreen(Screen):
                 size_hint_y=None,
                 height=40,
                 halign="center",
-                valign="middle"
+                valign="middle",
+                color=(0, 0, 0, 1)  # Cor do texto em preto
             )
             self.ids.historico_lista.add_widget(mensagem)
             return
@@ -39,13 +40,15 @@ class HistoryScreen(Screen):
             destino_dia = f"Dia desejado: {dia_desejado}"
             status_detalhes = f"Status: {status}"
 
+            # Ajustar as labels para ter o texto preto
             label_escala = Label(
                 text=escala_detalhes,
                 size_hint_y=None,
                 height=30,
                 halign="left",
                 valign="middle",
-                text_size=(self.width - 40, None)
+                text_size=(self.width - 40, None),
+                color=(0, 0, 0, 1)  # Cor do texto em preto
             )
             label_solicitante = Label(
                 text=solicitante,
@@ -53,7 +56,8 @@ class HistoryScreen(Screen):
                 height=20,
                 halign="left",
                 valign="middle",
-                text_size=(self.width - 40, None)
+                text_size=(self.width - 40, None),
+                color=(0, 0, 0, 1)  # Cor do texto em preto
             )
             label_dia = Label(
                 text=destino_dia,
@@ -61,7 +65,8 @@ class HistoryScreen(Screen):
                 height=20,
                 halign="left",
                 valign="middle",
-                text_size=(self.width - 40, None)
+                text_size=(self.width - 40, None),
+                color=(0, 0, 0, 1)  # Cor do texto em preto
             )
             label_status = Label(
                 text=status_detalhes,
@@ -69,7 +74,8 @@ class HistoryScreen(Screen):
                 height=20,
                 halign="left",
                 valign="middle",
-                text_size=(self.width - 40, None)
+                text_size=(self.width - 40, None),
+                color=(0, 0, 0, 1)  # Cor do texto em preto
             )
 
             layout.add_widget(label_escala)

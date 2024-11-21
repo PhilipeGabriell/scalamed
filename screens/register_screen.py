@@ -2,45 +2,48 @@ from kivy.uix.screenmanager import Screen
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.textinput import TextInput
 from kivy.uix.button import Button
-from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from services.firebase_service import cadastrar_funcionario
 
 class RegisterScreen(Screen):
-    def cadastrar_funcionario(self):
-        layout = BoxLayout(orientation="vertical", spacing=10, padding=10)
+    def on_pre_enter(self):
+        """Configura o fundo da tela para o padrão do sistema."""
+        self.update_background()  # Atualiza o fundo da tela
 
-        nome_input = TextInput(hint_text="Nome do Funcionário")
-        email_input = TextInput(hint_text="Email do Funcionário")
-        senha_input = TextInput(hint_text="Senha", password=True)
+    def update_background(self):
+        """Configura o fundo da tela."""
+        from kivy.graphics import Color, Rectangle
 
-        btn_cadastrar = Button(text="Cadastrar", size_hint_y=None, height=40)
-        btn_cancelar = Button(text="Cancelar", size_hint_y=None, height=40)
+        with self.canvas.before:
+            # Remove qualquer objeto anterior no canvas
+            Color(0.6, 0.9, 0.6, 1)  # Verde claro
+            self.rect = Rectangle(size=self.size, pos=self.pos)
+        
+        # Atualiza a posição e o tamanho do fundo ao redimensionar
+        self.bind(size=self.update_rect, pos=self.update_rect)
 
-        def realizar_cadastro(instance):
-            nome = nome_input.text.strip()
-            email = email_input.text.strip()
-            senha = senha_input.text.strip()
+    def update_rect(self, *args):
+        """Atualiza o fundo quando a tela for redimensionada."""
+        self.rect.pos = self.pos
+        self.rect.size = self.size
 
-            if nome and email and senha:
-                sucesso = cadastrar_funcionario(nome, email, senha)
-                if sucesso:
-                    popup.dismiss()
-                    Popup(title="Sucesso", content=Label(text="Funcionário cadastrado com sucesso!"), size_hint=(0.8, 0.3)).open()
-                else:
-                    Popup(title="Erro", content=Label(text="Erro ao cadastrar funcionário."), size_hint=(0.8, 0.3)).open()
+    def realizar_cadastro(self):
+        nome = self.ids.nome_input.text.strip()
+        email = self.ids.email_input.text.strip()
+        senha = self.ids.senha_input.text.strip()
+
+        if nome and email and senha:
+            sucesso = cadastrar_funcionario(nome, email, senha)
+            if sucesso:
+                self.manager.current = 'login'  # Voltar para a tela de login após cadastro
             else:
-                Popup(title="Erro", content=Label(text="Preencha todos os campos!"), size_hint=(0.8, 0.3)).open()
+                self.show_popup("Erro", "Erro ao cadastrar funcionário.")
+        else:
+            self.show_popup("Erro", "Preencha todos os campos!")
 
-        btn_cadastrar.bind(on_release=realizar_cadastro)
-        btn_cancelar.bind(on_release=lambda instance: popup.dismiss())
-
-        layout.add_widget(Label(text="Cadastrar Funcionário"))
-        layout.add_widget(nome_input)
-        layout.add_widget(email_input)
-        layout.add_widget(senha_input)
-        layout.add_widget(btn_cadastrar)
-        layout.add_widget(btn_cancelar)
-
-        popup = Popup(title="Cadastro de Funcionário", content=layout, size_hint=(0.8, 0.7))
+    def show_popup(self, title, message):
+        """Exibe um popup simples com título e mensagem."""
+        from kivy.uix.popup import Popup
+        from kivy.uix.label import Label
+        popup = Popup(title=title, content=Label(text=message), size_hint=(0.8, 0.3))
         popup.open()

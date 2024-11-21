@@ -1,24 +1,52 @@
 <RegisterScreen>:
-    name: "register"
     BoxLayout:
         orientation: 'vertical'
         padding: 20
-        spacing: 20
+        spacing: 10
 
         Label:
-            text: "Cadastro de Funcionário"
-            font_size: '20sp'
+            text: "Cadastrar Funcionário"
+            font_size: '24sp'
+            size_hint_y: None
+            height: self.texture_size[1] + 10
+            halign: 'center'
+            font_name: "Roboto"
+            color: 0, 0, 0, 1  # Preto
+
+        TextInput:
+            id: nome_input
+            hint_text: "Nome do Funcionário"
             size_hint_y: None
             height: 40
+            multiline: False
+
+        TextInput:
+            id: email_input
+            hint_text: "Email do Funcionário"
+            size_hint_y: None
+            height: 40
+            multiline: False
+
+        TextInput:
+            id: senha_input
+            hint_text: "Senha"
+            password: True
+            size_hint_y: None
+            height: 40
+            multiline: False
 
         Button:
-            text: "Cadastrar Funcionário"
+            text: "Cadastrar"
             size_hint_y: None
             height: 50
-            on_release: root.cadastrar_funcionario()
+            background_color: 0.3, 0.5, 1, 1  # Azul
+            color: 1, 1, 1, 1  # Texto branco
+            on_release: root.realizar_cadastro()
 
         Button:
-            text: "Voltar"
+            text: "Cancelar"
             size_hint_y: None
             height: 50
-            on_release: app.root.current = "dashboard"
+            background_color: 0.8, 0.8, 0.8, 1  # Cinza claro
+            color: 1, 1, 1, 1  # Texto branco
+            on_release: root.manager.current = 'login'  # Voltar para a tela de login

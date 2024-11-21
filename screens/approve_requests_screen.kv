@@ -1,26 +1,42 @@
-# screens/approve_requests_screen.kv
 <ApproveRequestsScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.6, 0.9, 0.6, 1  # Cor de fundo verde claro
+        Rectangle:
+            size: self.size
+            pos: self.pos
+
     BoxLayout:
         orientation: 'vertical'
         padding: 20
         spacing: 10
 
         Label:
-            text: "Aprovar Solicitações de Troca"
-            font_size: 24
+            text: "Aprovar Solicitação"
+            font_size: '20sp'
             size_hint_y: None
-            height: 50
+            height: self.texture_size[1] + 10
+            halign: 'center'
+            valign: 'middle'
+            color: 0, 0, 0, 1  # Texto em preto
+            font_name: "Roboto"
 
         ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+
             BoxLayout:
-                id: requests_box
-                orientation: 'vertical'
+                id: solicitacao_lista
+                orientation: "vertical"
                 size_hint_y: None
                 height: self.minimum_height
                 spacing: 10
 
         Button:
-            text: "Voltar ao Dashboard"
+            text: "Voltar"
             size_hint_y: None
             height: 50
-            on_release: app.root.current = "dashboard"
+            background_color: 0.4, 0.8, 1, 1  # Azul claro
+            color: 1, 1, 1, 1  # Texto branco
+            on_release: app.root.current = "approvals_pending"  # Ajuste conforme a navegação do seu app
+            font_name: "Roboto"

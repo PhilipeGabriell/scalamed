@@ -6,7 +6,6 @@ from kivy.uix.popup import Popup
 from kivymd.app import MDApp
 from services.firebase_service import buscar_ofertas, solicitar_troca
 
-
 class OfferSwapScreen(Screen):
     def on_pre_enter(self):
         # Exibir o histórico de ofertas ao carregar a tela
@@ -22,14 +21,15 @@ class OfferSwapScreen(Screen):
                 size_hint_y=None,
                 height=40,
                 halign="center",
-                valign="middle"
+                valign="middle",
+                color=(0, 0, 0, 1)  # Cor do texto em preto
             )
             self.ids.ofertas_lista.add_widget(mensagem)
             return
 
         for oferta_id, oferta in ofertas.items():
             layout = BoxLayout(orientation="vertical", size_hint_y=None, height=140, spacing=10, padding=[10, 5, 10, 5])
-            
+
             escala_info = oferta.get("escala_info", {})
             dia_desejado = oferta.get("dia_desejado", "Não especificado")
             usuario_id = oferta.get("usuario_id", "Desconhecido")
@@ -41,13 +41,14 @@ class OfferSwapScreen(Screen):
             usuario_solicitante = f"Solicitante: {usuario_id}"
             destino_dia = f"Dia desejado: {dia_desejado}"
 
-            # Ajustando Labels com alinhamento e quebra de linha
+            # Ajustando Labels com alinhamento, texto em preto, e quebra de linha
             label_escala = Label(
                 text=escala_detalhes,
                 size_hint_y=None,
                 height=40,
                 halign="left",
                 valign="middle",
+                color=(0, 0, 0, 1),  # Texto preto
                 text_size=(self.width - 40, None)  # Largura ajustada para evitar cortes
             )
             label_escala.bind(size=label_escala.setter('text_size'))
@@ -58,6 +59,7 @@ class OfferSwapScreen(Screen):
                 height=20,
                 halign="left",
                 valign="middle",
+                color=(0, 0, 0, 1),  # Texto preto
                 text_size=(self.width - 40, None)
             )
             label_origem.bind(size=label_origem.setter('text_size'))
@@ -68,11 +70,20 @@ class OfferSwapScreen(Screen):
                 height=20,
                 halign="left",
                 valign="middle",
+                color=(0, 0, 0, 1),  # Texto preto
                 text_size=(self.width - 40, None)
             )
             label_dia.bind(size=label_dia.setter('text_size'))
 
-            btn_solicitar = Button(text="Solicitar Troca", size_hint_y=None, height=40)
+            # Botão de solicitar troca com fundo azul
+            btn_solicitar = Button(
+                text="Solicitar Troca",
+                size_hint_y=None,
+                height=40,
+                background_normal='',
+                background_color=(0.3, 0.5, 1, 1),  # Azul claro
+                color=(1, 1, 1, 1)  # Texto branco
+            )
             btn_solicitar.bind(on_release=lambda instance, oid=oferta_id, oferta=oferta: self.solicitar_troca(oid, oferta))
 
             layout.add_widget(label_escala)
